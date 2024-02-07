@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UAT Test Script</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>UAT Test Script</h1>
+    <table id="testScriptTable">
+      <thead>
+        <tr>
+          <th>Test Case ID</th>
+          <th>Description</th>
+          <th>Steps</th>
+          <th>Expected Results</th>
+        </tr>
+      </thead>
+      <tbody id="testScriptBody">
+        <!-- Test cases will be dynamically added here -->
+      </tbody>
+    </table>
+
+    <script>
+      // Fetch the JSON file
+      fetch("uat_test_script.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const testScriptBody = document.getElementById("testScriptBody");
+
+          // Populate the table with test cases
+          data.forEach((testCase) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                        <td>${testCase.test_case_id}</td>
+                        <td>${testCase.description}</td>
+                        <td>${testCase.steps
+                          .map((step) => `${step.action}: ${step.value}`)
+                          .join("<br>")}</td>
+                        <td>${testCase.expected_results}</td>
+                    `;
+            testScriptBody.appendChild(row);
+          });
+        })
+        .catch((error) => console.error("Error fetching test script:", error));
+    </script>
+  </body>
+</html>

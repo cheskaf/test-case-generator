@@ -1,0 +1,23 @@
+[
+    {
+        "test_case_id": "TC001",
+        "description": "Verify login functionality",
+        "steps": [
+            {
+                "action": "Enter username",
+                "element": "username_or_email",
+                "value": "example_user"
+            },
+            {
+                "action": "Enter password",
+                "element": "password",
+                "value": "password123"
+            },
+            {
+                "action": "Click login button",
+                "element": "button.project-btn-secondary"
+            }
+        ],
+        "expected_results": "User should be logged in successfully"
+    }
+]
