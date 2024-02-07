@@ -86,6 +86,9 @@
                 "action": "click",
                 "element": ".btn"
             }
-        ]
+        ],
+        "expected_results": "User should be able to register successfully",
+        "actual_results": "",
+        "status": "Pass/Fail"
     }
 ]

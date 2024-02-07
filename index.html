@@ -29,6 +29,8 @@
           <th>Description</th>
           <th>Steps</th>
           <th>Expected Results</th>
+          <th>Actual Results</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody id="testScriptBody">
@@ -53,6 +55,8 @@
                           .map((step) => `${step.action}: ${step.value}`)
                           .join("<br>")}</td>
                         <td>${testCase.expected_results}</td>
+                        <td>${testCase.actual_results}</td>
+                        <td>${testCase.status}</td>
                     `;
             testScriptBody.appendChild(row);
           });

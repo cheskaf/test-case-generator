@@ -64,7 +64,10 @@ async function generateUATTestScript() {
                     { action: 'type', element: 'bday', value: '0199-01-01' },
                     { action: 'type', element: 'bday', value: '1991-01-01' },
                     { action: 'click', element: '.btn' },
-                ]
+                ],
+                expected_results: 'User should be able to register successfully',
+                actual_results: '',
+                status: 'Pass/Fail',
             },
             // Add more test cases as needed...
         ];
