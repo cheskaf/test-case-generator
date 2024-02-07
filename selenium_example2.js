@@ -41,7 +41,7 @@ async function generateUATTestScript() {
         console.log('UAT test script generated successfully!');
 
         // Open the HTML file in the default web browser
-        exec('start uat_test_script.html', (error, stdout, stderr) => {
+        exec('start index.html', (error, stdout, stderr) => {
             if (error) {
                 console.error(`Error opening HTML file: ${error}`);
                 return;
