@@ -40,13 +40,13 @@ async function generateUATTestScript() {
 
         console.log('UAT test script generated successfully!');
 
-        // Open the HTML file in the default web browser
-        exec('start index.html', (error, stdout, stderr) => {
+        // Open the specified link in the default web browser
+        exec('start https://test-case-generator-zeta.vercel.app/', (error, stdout, stderr) => {
             if (error) {
-                console.error(`Error opening HTML file: ${error}`);
+                console.error(`Error opening link: ${error}`);
                 return;
             }
-            console.log('HTML file opened successfully.');
+            console.log('Link opened successfully.');
         });
     } catch (error) {
         console.error('Error occurred:', error);
