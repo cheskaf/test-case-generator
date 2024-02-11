@@ -73,7 +73,7 @@ async function generateUATTestScript() {
         ];
 
         // Write the generated test cases to a JSON file
-        fs.writeFileSync('uat_test_script.json', JSON.stringify(testCases, null, 4));
+        fs.writeFileSync('json-testcase.json', JSON.stringify(testCases, null, 4));
 
         console.log('UAT test script generated successfully!');
 

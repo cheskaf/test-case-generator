@@ -20,6 +20,7 @@
       }
     </style>
   </head>
+  
   <body>
     <h1>UAT Test Script</h1>
     <table id="testScriptTable">
@@ -40,7 +41,7 @@
 
     <script>
       // Fetch the JSON file
-      fetch("uat_test_script.json")
+      fetch("json-testcase.json")
         .then((response) => response.json())
         .then((data) => {
           const testScriptBody = document.getElementById("testScriptBody");
