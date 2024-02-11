@@ -57,5 +57,70 @@
         "actualResults": "Post successfully edited",
         "status": "Pass",
         "screenshot": "./screenshots/test_case_TC001.png"
+    },
+    {
+        "test_case_id": "TC002",
+        "description": "Verify profile editing functionality",
+        "steps": [
+            {
+                "action": "click",
+                "element": "usericon",
+                "value": "User icon"
+            },
+            {
+                "action": "click",
+                "element": ".show > li:nth-child(1) .dropdown-item",
+                "value": "Edit button"
+            },
+            {
+                "action": "click",
+                "element": "profileThemeSelect",
+                "value": "Dropdown for profile theme"
+            },
+            {
+                "action": "click",
+                "element": "option:nth-child(3)",
+                "value": "\"🧡 orange\""
+            },
+            {
+                "action": "click",
+                "element": "postname",
+                "value": "Input field for post name"
+            },
+            {
+                "action": "type",
+                "element": "postname",
+                "value": "\"hj\""
+            },
+            {
+                "action": "click",
+                "element": "postdescription",
+                "value": "Input field for post description"
+            },
+            {
+                "action": "type",
+                "element": "postdescription",
+                "value": "\"hi, i'm hyunjin!\""
+            },
+            {
+                "action": "click",
+                "element": "difficultySelect",
+                "value": "Dropdown for difficulty level"
+            },
+            {
+                "action": "click",
+                "element": "option:nth-child(1)",
+                "value": "\"Beginner difficulty level\""
+            },
+            {
+                "action": "click",
+                "element": ".select-btn-preferences",
+                "value": "Submit button"
+            }
+        ],
+        "expectedResults": "Profile successfully edited",
+        "actualResults": "Error: Element not interactable",
+        "status": "Fail",
+        "screenshot": "./screenshots/test_case_TC002_with_error.png"
     }
 ]

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UAT Test Script</title>
+    <title>Test Cases</title>
     <style>
       table {
         width: 100%;
@@ -22,7 +22,7 @@
   </head>
   
   <body>
-    <h1>UAT Test Script</h1>
+    <h1>Test Cases</h1>
     <table id="testScriptTable">
       <thead>
         <tr>
@@ -53,7 +53,7 @@
                         <td>${testCase.test_case_id}</td>
                         <td>
                           ${testCase.description}
-                          <img src="${testCase.screenshot}" alt="screenshot" />
+                          <img src="${testCase.screenshot}" alt="screenshot" style="max-height:200px" />
                         </td>
                         <td>${testCase.steps
                           .map((step) => `${step.action}: ${step.value}`)
