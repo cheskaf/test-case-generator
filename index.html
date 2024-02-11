@@ -55,8 +55,8 @@
                         <td>${testCase.steps
                           .map((step) => `${step.action}: ${step.value}`)
                           .join("<br>")}</td>
-                        <td>${testCase.expected_results}</td>
-                        <td>${testCase.actual_results}</td>
+                        <td>${testCase.expectedResults}</td>
+                        <td>${testCase.actualResults}</td>
                         <td>${testCase.status}</td>
                     `;
             testScriptBody.appendChild(row);
