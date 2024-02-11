@@ -119,8 +119,8 @@
             }
         ],
         "expectedResults": "Profile successfully edited",
-        "actualResults": "Profile successfully edited",
-        "status": "Pass",
-        "screenshot": "./screenshots/test_case_TC002.png"
+        "actualResults": "Error: Element 'undefined' not interactable",
+        "status": "Fail",
+        "screenshot": "./screenshots/test_case_TC002_with_error.png"
     }
 ]

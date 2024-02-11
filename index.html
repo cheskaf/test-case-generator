@@ -41,13 +41,13 @@
     </table>
 
     <script>
-       // Read the content of updated.txt
-       fetch('updated.txt')
-        .then(response => response.text())
-        .then(dateTime => {
-            document.getElementById('updated').textContent = dateTime;
-        })
-        .catch(error => console.error('Error fetching updated time:', error));
+      // Read the content of updated.txt
+      fetch('updated.txt')
+      .then(response => response.text())
+      .then(dateTime => {
+          document.getElementById('updated').textContent = dateTime;
+      })
+      .catch(error => console.error('Error fetching updated time:', error));
         
       // Fetch the JSON file
       fetch("test-cases.json")
@@ -64,9 +64,13 @@
                           ${testCase.description}
                           <img src="${testCase.screenshot}" alt="screenshot" style="max-height:200px" />
                         </td>
-                        <td>${testCase.steps
-                          .map((step) => `${step.action}: ${step.value}`)
-                          .join("<br>")}</td>
+                        <td>
+                          <ol>
+                            ${testCase.steps
+                              .map((step) => `<li>${step.action}: ${step.value}</li>`)
+                              .join("")}
+                          </ol>
+                        </td>
                         <td>${testCase.expectedResults}</td>
                         <td>${testCase.actualResults}</td>
                         <td>${testCase.status}</td>

@@ -50,12 +50,13 @@ async function testEditProfile(driver, TEST_CASE_FILE_PATH) {
             }
             await driver.findElement(By.css("#difficultySelect > option:nth-child(1)")).click()
             
-            // await driver.findElement(By.css(".select-btn-preferences")).click()
-            // await driver.findElement(By.css("label:nth-child(8)")).click()
-            // await driver.findElement(By.css("label:nth-child(6)")).click()
-            // await driver.findElement(By.css("label:nth-child(2)")).click()
-            // await driver.findElement(By.css("label:nth-child(22)")).click()
-            // await driver.findElement(By.id("tagsSelect")).click()
+            // comment the following to avoid error
+            await driver.findElement(By.css(".select-btn-preferences")).click()
+            await driver.findElement(By.css("label:nth-child(8)")).click()
+            await driver.findElement(By.css("label:nth-child(6)")).click()
+            await driver.findElement(By.css("label:nth-child(2)")).click()
+            await driver.findElement(By.css("label:nth-child(22)")).click()
+            await driver.findElement(By.id("tagsSelect")).click()
 
             // Submit the form
             await driver.findElement(By.css(".project-btn-primary")).click()

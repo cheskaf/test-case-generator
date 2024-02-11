@@ -18,9 +18,8 @@ async function testEditPost(driver, TEST_CASE_FILE_PATH) {
         let status;
         
         // Capture and save a screenshot
-        let screenshotFilePath;
+        let screenshotFilePath;        
         
-        // Assuming 'ElementNotInteractableError' represents an error when an element is not interactable
         // Catch the specific error and set appropriate values for actualResults and status
         try {
             console.log('Executing edit post test scenario...');
