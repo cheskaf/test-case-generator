@@ -24,10 +24,37 @@ function determineStatus(expectedResults, actualResults) {
 // Function to append the test case to the test case file
 function appendTestCaseToFile(testCase, filePath) {
     const fs = require('fs');
-    const testCases = JSON.parse(fs.readFileSync(filePath));
-    testCases.push(testCase);
+    let testCases = [];
+    let testCaseExists = false;
+
+    // Check if the file exists and is not empty
+    if (fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        
+        // Parse the file content if it's not empty
+        if (fileContent.trim() !== '') {
+            testCases = JSON.parse(fileContent);
+
+            // Check if the test case ID already exists in the file
+            testCases.forEach((existingTestCase, index) => {
+                if (existingTestCase.test_case_id === testCase.test_case_id) {
+                    // Update the existing test case
+                    testCases[index] = testCase;
+                    testCaseExists = true;
+                }
+            });
+        }
+    }
+
+    // If the test case doesn't exist, append it to the array
+    if (!testCaseExists) {
+        testCases.push(testCase);
+    }
+
+    // Write the modified test cases array back to the file
     fs.writeFileSync(filePath, JSON.stringify(testCases, null, 4));
 }
+
 
 // Function to execute the test scenario
 async function executeTestScenario() {
@@ -36,6 +63,13 @@ async function executeTestScenario() {
     
     // Test scenario: Edit a post
     try {
+        // Login
+        await driver.get("https://artisan-ai-a5f011e35d03.herokuapp.com/login/?next=/post/97/")
+        await driver.findElement(By.id("username_or_email")).click()
+        await driver.findElement(By.id("username_or_email")).sendKeys("userbeginner")
+        await driver.findElement(By.id("password")).sendKeys("Abc_1234")
+        await driver.findElement(By.css(".project-btn-secondary")).click()
+        
         // Navigate to the post to be edited
         await driver.get('https://artisan-ai-a5f011e35d03.herokuapp.com/post/97/');
         
@@ -45,8 +79,10 @@ async function executeTestScenario() {
 
         // Input data into form fields
         await driver.findElement(By.id("postname")).click()
+        await driver.findElement(By.id("postname")).clear()
         await driver.findElement(By.id("postname")).sendKeys("eula plushie")
         await driver.findElement(By.id("postdescription")).click()
+        await driver.findElement(By.id("postdescription")).clear()
         await driver.findElement(By.id("postdescription")).sendKeys("my fav character!")
         await driver.findElement(By.id("difficultySelect")).click()
         {

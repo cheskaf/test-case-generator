@@ -1,0 +1,60 @@
+[
+    {
+        "test_case_id": "TC001",
+        "description": "Verify post editing functionality",
+        "steps": [
+            {
+                "action": "navigate",
+                "value": "View Post page: https://artisan-ai-a5f011e35d03.herokuapp.com/post/97/"
+            },
+            {
+                "action": "click",
+                "element": ".fa-ellipsis",
+                "value": "Dropdown Menu icon"
+            },
+            {
+                "action": "click",
+                "element": ".show > li:nth-child(1) .dropdown-item",
+                "value": "Edit button"
+            },
+            {
+                "action": "click",
+                "element": "postname",
+                "value": "Input field for post name"
+            },
+            {
+                "action": "type",
+                "element": "postname",
+                "value": "eula plushie"
+            },
+            {
+                "action": "click",
+                "element": "postdescription",
+                "value": "Input field for post description"
+            },
+            {
+                "action": "type",
+                "element": "postdescription",
+                "value": "my fav character!"
+            },
+            {
+                "action": "click",
+                "element": "difficultySelect",
+                "value": "Dropdown for difficulty level"
+            },
+            {
+                "action": "click",
+                "element": "option:nth-child(4)",
+                "value": "Expert difficulty level"
+            },
+            {
+                "action": "click",
+                "element": ".project-btn-primary",
+                "value": "Submit button"
+            }
+        ],
+        "expectedResults": "Post successfully edited",
+        "actualResults": "Post successfully edited",
+        "status": "Pass"
+    }
+]
