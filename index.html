@@ -51,7 +51,10 @@
             const row = document.createElement("tr");
             row.innerHTML = `
                         <td>${testCase.test_case_id}</td>
-                        <td>${testCase.description}</td>
+                        <td>
+                          ${testCase.description}
+                          <img src="${testCase.screenshot}" alt="screenshot" />
+                        </td>
                         <td>${testCase.steps
                           .map((step) => `${step.action}: ${step.value}`)
                           .join("<br>")}</td>
