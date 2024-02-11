@@ -23,6 +23,7 @@
   
   <body>
     <h1>Test Cases</h1>
+    <p>Updated: <span id="updated"></span></p>
     <table id="testScriptTable">
       <thead>
         <tr>
@@ -40,6 +41,14 @@
     </table>
 
     <script>
+       // Read the content of updated.txt
+       fetch('updated.txt')
+        .then(response => response.text())
+        .then(dateTime => {
+            document.getElementById('updated').textContent = dateTime;
+        })
+        .catch(error => console.error('Error fetching updated time:', error));
+        
       // Fetch the JSON file
       fetch("test-cases.json")
         .then((response) => response.json())

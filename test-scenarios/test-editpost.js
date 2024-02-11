@@ -24,13 +24,6 @@ async function testEditPost(driver, TEST_CASE_FILE_PATH) {
         // Catch the specific error and set appropriate values for actualResults and status
         try {
             console.log('Executing edit post test scenario...');
-        
-            // Login
-            await driver.get("https://artisan-ai-a5f011e35d03.herokuapp.com/login/?next=/post/97/")
-            await driver.findElement(By.id("username_or_email")).click()
-            await driver.findElement(By.id("username_or_email")).sendKeys("userbeginner")
-            await driver.findElement(By.id("password")).sendKeys("Abc_1234")
-            await driver.findElement(By.css(".project-btn-secondary")).click()
             
             // Navigate to the post to be edited
             await driver.get('https://artisan-ai-a5f011e35d03.herokuapp.com/post/97/');
@@ -68,11 +61,11 @@ async function testEditPost(driver, TEST_CASE_FILE_PATH) {
             
         } catch (elementError) {
             // Handle the error and set appropriate values for actualResults and status
-            actualResults = 'Error: Element not interactable';
+            actualResults = `Error: Element '${elementError.element}' not interactable`;
             status = 'Fail';
             
             // Capture and save a screenshot if necessary
-            screenshotFilePath = await captureAndSaveScreenshot(driver, testCaseId + '_with_error');
+            screenshotFilePath = await captureAndSaveScreenshot(driver, `${testCaseId}_with_error`);
         }
         
         // Create a test case object

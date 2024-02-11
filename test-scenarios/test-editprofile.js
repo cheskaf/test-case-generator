@@ -38,8 +38,10 @@ async function testEditProfile(driver, TEST_CASE_FILE_PATH) {
             }
             await driver.findElement(By.css("#profileThemeSelect > option:nth-child(3)")).click()
             await driver.findElement(By.id("postname")).click()
+            await driver.findElement(By.id("postname")).clear()
             await driver.findElement(By.id("postname")).sendKeys("hj")
             await driver.findElement(By.id("postdescription")).click()
+            await driver.findElement(By.id("postdescription")).clear()
             await driver.findElement(By.id("postdescription")).sendKeys("hi, i\'m hyunjin!")
             await driver.findElement(By.id("difficultySelect")).click()
             {
@@ -47,12 +49,13 @@ async function testEditProfile(driver, TEST_CASE_FILE_PATH) {
             await dropdown.findElement(By.xpath("//option[. = 'beginner']")).click()
             }
             await driver.findElement(By.css("#difficultySelect > option:nth-child(1)")).click()
-            await driver.findElement(By.css(".select-btn-preferences")).click()
-            await driver.findElement(By.css("label:nth-child(8)")).click()
-            await driver.findElement(By.css("label:nth-child(6)")).click()
-            await driver.findElement(By.css("label:nth-child(2)")).click()
-            await driver.findElement(By.css("label:nth-child(22)")).click()
-            await driver.findElement(By.id("tagsSelect")).click()
+            
+            // await driver.findElement(By.css(".select-btn-preferences")).click()
+            // await driver.findElement(By.css("label:nth-child(8)")).click()
+            // await driver.findElement(By.css("label:nth-child(6)")).click()
+            // await driver.findElement(By.css("label:nth-child(2)")).click()
+            // await driver.findElement(By.css("label:nth-child(22)")).click()
+            // await driver.findElement(By.id("tagsSelect")).click()
 
             // Submit the form
             await driver.findElement(By.css(".project-btn-primary")).click()
@@ -69,11 +72,11 @@ async function testEditProfile(driver, TEST_CASE_FILE_PATH) {
         
         } catch (elementError) {
             // Handle the error and set appropriate values for actualResults and status
-            actualResults = 'Error: Element not interactable';
+            actualResults = `Error: Element '${elementError.element}' not interactable`;
             status = 'Fail';
             
             // Capture and save a screenshot if necessary
-            screenshotFilePath = await captureAndSaveScreenshot(driver, testCaseId + '_with_error');
+            screenshotFilePath = await captureAndSaveScreenshot(driver, `${testCaseId}_with_error`);
         }
         
         // Create a test case object

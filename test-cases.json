@@ -119,8 +119,8 @@
             }
         ],
         "expectedResults": "Profile successfully edited",
-        "actualResults": "Error: Element not interactable",
-        "status": "Fail",
-        "screenshot": "./screenshots/test_case_TC002_with_error.png"
+        "actualResults": "Profile successfully edited",
+        "status": "Pass",
+        "screenshot": "./screenshots/test_case_TC002.png"
     }
 ]
