@@ -25,7 +25,7 @@
             {
                 "action": "type",
                 "element": "postname",
-                "value": "eula plushie"
+                "value": "\"eula plushie\""
             },
             {
                 "action": "click",
@@ -35,7 +35,7 @@
             {
                 "action": "type",
                 "element": "postdescription",
-                "value": "my fav character!"
+                "value": "\"my fav character!\""
             },
             {
                 "action": "click",
@@ -45,7 +45,7 @@
             {
                 "action": "click",
                 "element": "option:nth-child(4)",
-                "value": "Expert difficulty level"
+                "value": "\"Expert difficulty level\""
             },
             {
                 "action": "click",
@@ -55,6 +55,7 @@
         ],
         "expectedResults": "Post successfully edited",
         "actualResults": "Post successfully edited",
-        "status": "Pass"
+        "status": "Pass",
+        "screenshot": "./screenshots/test_case_TC001.png"
     }
 ]

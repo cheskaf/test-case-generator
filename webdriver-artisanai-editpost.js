@@ -1,18 +1,20 @@
 // Selenium Webdriver test script for editing a post
 const { Builder, By, until } = require('selenium-webdriver');
+const fs = require('fs');
 
 // Constant for the test case JSON file path
 const TEST_CASE_FILE_PATH = 'test-cases.json';
 
 // Function to create a test case object
-function createTestCase(testCaseId, description, steps, expectedResults, actualResults, status) {
+function createTestCase(testCaseId, description, steps, expectedResults, actualResults, status, screenshot) {
     return {
         test_case_id: testCaseId,
         description: description,
         steps: steps,
         expectedResults: expectedResults,
         actualResults: actualResults,
-        status: status
+        status: status,
+        screenshot: screenshot
     };
 }
 
@@ -21,8 +23,26 @@ function determineStatus(expectedResults, actualResults) {
     return expectedResults === actualResults ? 'Pass' : 'Fail';
 }
 
+// Function to capture and save a screenshot
+async function captureAndSaveScreenshot(driver, testCaseId) {
+    console.log('Capturing screenshot...');
+    const screenshot = await driver.takeScreenshot();
+    const screenshotDirectory = './screenshots/';    
+    // Check if the directory exists, create it if it doesn't
+    if (!fs.existsSync(screenshotDirectory)) {
+        fs.mkdirSync(screenshotDirectory);
+    }
+    const screenshotFilePath = `${screenshotDirectory}test_case_${testCaseId}.png`;
+
+    // Save the screenshot as a PNG file
+    fs.writeFileSync(screenshotFilePath, screenshot, 'base64');
+    return screenshotFilePath;
+}
+
 // Function to append the test case to the test case file
 function appendTestCaseToFile(testCase, filePath) {
+    console.log('Updating test case file...');
+    
     const fs = require('fs');
     let testCases = [];
     let testCaseExists = false;
@@ -57,12 +77,14 @@ function appendTestCaseToFile(testCase, filePath) {
 
 
 // Function to execute the test scenario
-async function executeTestScenario() {
+async function executeTestScenario() {    
     // Initialize Firefox WebDriver
     let driver = await new Builder().forBrowser('firefox').build();
     
     // Test scenario: Edit a post
     try {
+        console.log('Executing test scenario...');
+        
         // Login
         await driver.get("https://artisan-ai-a5f011e35d03.herokuapp.com/login/?next=/post/97/")
         await driver.findElement(By.id("username_or_email")).click()
@@ -102,7 +124,11 @@ async function executeTestScenario() {
         const actualResults = 'Post successfully edited';
         const status = determineStatus(expectedResults, actualResults);
         
+        // Capture and save a screenshot
+        const screenshotFilePath = await captureAndSaveScreenshot(driver, 'TC001');
+        
         // Create a test case object
+        console.log('Creating test case...');
         let testCase = createTestCase(
             'TC001',
             'Verify post editing functionality',
@@ -111,17 +137,18 @@ async function executeTestScenario() {
                 { action: 'click', element: '.fa-ellipsis', value: 'Dropdown Menu icon'},
                 { action: 'click', element: '.show > li:nth-child(1) .dropdown-item', value: 'Edit button'},
                 { action: 'click', element: 'postname', value: 'Input field for post name'},
-                { action: 'type', element: 'postname', value: 'eula plushie' },
+                { action: 'type', element: 'postname', value: '"eula plushie"' },
                 { action: 'click', element: 'postdescription', value: 'Input field for post description'},
-                { action: 'type', element: 'postdescription', value: 'my fav character!' },
+                { action: 'type', element: 'postdescription', value: '"my fav character!"' },
                 { action: 'click', element: 'difficultySelect', value: 'Dropdown for difficulty level'},
-                { action: 'click', element: 'option:nth-child(4)', value: 'Expert difficulty level'},
+                { action: 'click', element: 'option:nth-child(4)', value: '"Expert difficulty level"'},
                 { action: 'click', element: '.project-btn-primary', value: 'Submit button'}
             ],
             expectedResults,
             actualResults,
-            status
-        );
+            status,
+            screenshotFilePath
+        );        
         
         // Append the test case to the test case file
         appendTestCaseToFile(testCase, TEST_CASE_FILE_PATH);
