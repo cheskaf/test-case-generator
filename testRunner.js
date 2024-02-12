@@ -8,6 +8,7 @@ const TEST_CASE_FILE_PATH = 'test-cases.json';
 // Import test scenarios
 const testEditPost = require('./test-scenarios/test-editpost.js');
 const testEditProfile = require('./test-scenarios/test-editprofile.js');
+const testDigicashRequest = require('./test-scenarios/test-digicash-request.js');
 
 // Function to generate the current date and time
 function getCurrentDateTime() {
@@ -27,15 +28,16 @@ async function executeTestScenarios() {
         fs.writeFileSync('updated.txt', dateTime);
         
         // Try logging in
-        await driver.get("https://artisan-ai-a5f011e35d03.herokuapp.com/login/")
-        await driver.findElement(By.id("username_or_email")).click()
-        await driver.findElement(By.id("username_or_email")).sendKeys("userbeginner")
-        await driver.findElement(By.id("password")).sendKeys("Abc_1234")
-        await driver.findElement(By.css(".project-btn-secondary")).click()
+        // await driver.get("https://artisan-ai-a5f011e35d03.herokuapp.com/login/")
+        // await driver.findElement(By.id("username_or_email")).click()
+        // await driver.findElement(By.id("username_or_email")).sendKeys("userbeginner")
+        // await driver.findElement(By.id("password")).sendKeys("Abc_1234")
+        // await driver.findElement(By.css(".project-btn-secondary")).click()
         
         // Execute test scenarios
-        await testEditPost(driver, TEST_CASE_FILE_PATH);
-        await testEditProfile(driver, TEST_CASE_FILE_PATH);
+        await testDigicashRequest(driver, TEST_CASE_FILE_PATH);
+        // await testEditPost(driver, TEST_CASE_FILE_PATH);
+        // await testEditProfile(driver, TEST_CASE_FILE_PATH);
     } catch (error) {
         console.error('Error occurred:', error);
     } finally {

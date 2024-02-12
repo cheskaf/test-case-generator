@@ -122,5 +122,225 @@
         "actualResults": "Error: Element 'undefined' not interactable",
         "status": "Fail",
         "screenshot": "./screenshots/test_case_TC002_with_error.png"
+    },
+    {
+        "test_case_id": "TC003",
+        "description": "Verify Digicash \"Edit iBERF\" functionality",
+        "steps": [
+            {
+                "action": "click",
+                "element": "id=prjName",
+                "value": "Project Name Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=prjName",
+                "value": "Project Title Edited"
+            },
+            {
+                "action": "click",
+                "element": "id=needDate",
+                "value": "Need Date Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=needDate",
+                "value": "2024-02-14"
+            },
+            {
+                "action": "click",
+                "element": "id=prebidDate",
+                "value": "Pre-bid Date Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=prebidDate",
+                "value": "2024-02-16"
+            },
+            {
+                "action": "click",
+                "element": "id=bidDate",
+                "value": "Bid Date Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bidDate",
+                "value": "2024-02-20"
+            },
+            {
+                "action": "click",
+                "element": "id=rqstr",
+                "value": "Requestor Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=rqstr",
+                "value": "Itsd Dev Intern 1"
+            },
+            {
+                "action": "click",
+                "element": "id=client",
+                "value": "Client Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=client",
+                "value": "Microgenesis Business Systems"
+            },
+            {
+                "action": "click",
+                "element": "id=select",
+                "value": "Project Type Dropdown"
+            },
+            {
+                "action": "select",
+                "element": "id=select",
+                "value": "Social Media"
+            },
+            {
+                "action": "click",
+                "element": "id=prjAmt",
+                "value": "Project Amount Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=prjAmt",
+                "value": "20000"
+            },
+            {
+                "action": "click",
+                "element": "id=gpa",
+                "value": "GPA Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=gpa",
+                "value": "29999"
+            },
+            {
+                "action": "click",
+                "element": "id=gpa",
+                "value": "GPA Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=gpa",
+                "value": "29998"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt2",
+                "value": "Budget Amount 2 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt2",
+                "value": "5000"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt3",
+                "value": "Budget Amount 3 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt3",
+                "value": "5000"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt1",
+                "value": "Budget Amount 1 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt1",
+                "value": "10000"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt3",
+                "value": "Budget Amount 3 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt3",
+                "value": "500"
+            },
+            {
+                "action": "click",
+                "element": "id=addRowBtn",
+                "value": "Add Row Button"
+            },
+            {
+                "action": "click",
+                "element": "id=partSelect4",
+                "value": "Part 4 Dropdown"
+            },
+            {
+                "action": "select",
+                "element": "id=partSelect4",
+                "value": "Transportation"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt4",
+                "value": "Budget Amount 4 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt4",
+                "value": "500"
+            },
+            {
+                "action": "click",
+                "element": "css=#exp1 .fa",
+                "value": "Expand Button"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt2",
+                "value": "Budget Amount 2 Textfield"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt3",
+                "value": "Budget Amount 3 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt3",
+                "value": "1500"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt4",
+                "value": "Budget Amount 4 Textfield"
+            },
+            {
+                "action": "click",
+                "element": "id=bdgtAmt4",
+                "value": "Budget Amount 4 Textfield"
+            },
+            {
+                "action": "input",
+                "element": "id=bdgtAmt4",
+                "value": "2500"
+            },
+            {
+                "action": "click",
+                "element": "css=.col-md-9",
+                "value": "Column"
+            },
+            {
+                "action": "click",
+                "element": "id=cancelBtn",
+                "value": "Cancel Button"
+            }
+        ],
+        "expectedResults": "Edited iBERF successfully",
+        "actualResults": "Error: Element 'undefined' not interactable",
+        "status": "Fail",
+        "screenshot": "./screenshots/test_case_TC003_with_error.png"
     }
 ]
