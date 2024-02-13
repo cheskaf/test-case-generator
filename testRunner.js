@@ -9,6 +9,7 @@ const TEST_CASE_FILE_PATH = 'test-cases.json';
 const testEditPost = require('./test-scenarios/test-editpost.js');
 const testEditProfile = require('./test-scenarios/test-editprofile.js');
 const testDigicashRequest = require('./test-scenarios/test-digicash-request.js');
+const testDigicashRequestLogin  = require( './test-scenarios/test-digicash-request-login.js' );
 
 // Function to generate the current date and time
 function getCurrentDateTime() {
@@ -35,7 +36,8 @@ async function executeTestScenarios() {
         // await driver.findElement(By.css(".project-btn-secondary")).click()
         
         // Execute test scenarios
-        await testDigicashRequest(driver, TEST_CASE_FILE_PATH);
+        await testDigicashRequestLogin(driver, TEST_CASE_FILE_PATH);
+        // await testDigicashRequest(driver, TEST_CASE_FILE_PATH);
         // await testEditPost(driver, TEST_CASE_FILE_PATH);
         // await testEditProfile(driver, TEST_CASE_FILE_PATH);
     } catch (error) {

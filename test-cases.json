@@ -125,7 +125,7 @@
     },
     {
         "test_case_id": "TC003",
-        "description": "Verify Digicash \"Edit iBERF\" functionality",
+        "description": "Verify DigiCash \"Edit iBERF\" functionality",
         "steps": [
             {
                 "action": "click",
@@ -339,8 +339,8 @@
             }
         ],
         "expectedResults": "Edited iBERF successfully",
-        "actualResults": "Error: Element 'undefined' not interactable",
-        "status": "Fail",
-        "screenshot": "./screenshots/test_case_TC003_with_error.png"
+        "actualResults": "Edited iBERF successfully",
+        "status": "Pass",
+        "screenshot": "./screenshots/test_case_TC003.png"
     }
 ]
