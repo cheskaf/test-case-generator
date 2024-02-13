@@ -93,7 +93,6 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
                 { selectorType: "id", identifier: "bdgtAmt4", action: ["click", "sendKeys", "500"] },
                 { selectorType: "css", identifier: "#exp1 .fa", action: ["click"] },
                 { selectorType: "css", identifier: ".col-md-9", action: ["click"] },
-                { selectorType: "id", identifier: "cancelBtn", action: ["click"] },
             ];
 
             // Loop through the elements array
@@ -128,13 +127,17 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
                     console.error(`Error occurred with '${identifier}' element:`, error);
                 }
             }
-        
-            // Set values for actualResults and status
-            actualResults = 'Edited iBERF successfully';
-            status = determineStatus(expectedResults, actualResults);
+            
             
             // Capture and save a screenshot
             screenshotFilePath = await captureAndSaveScreenshot(driver, testCaseId);
+
+            // Cancel the form submission (because of error when clicking save draft/submit button)
+            await driver.findElement(By.id("cancelBtn")).click()
+            
+            // Set values for actualResults and status
+            actualResults = 'Edited iBERF successfully';
+            status = determineStatus(expectedResults, actualResults);           
         
         } catch (error) {
             // Handle the error and set appropriate values for actualResults and status
