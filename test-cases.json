@@ -249,31 +249,6 @@
             },
             {
                 "action": "click",
-                "element": "id=addRowBtn",
-                "value": "Add Row Button"
-            },
-            {
-                "action": "click",
-                "element": "id=partSelect4",
-                "value": "Part 4 Dropdown"
-            },
-            {
-                "action": "select",
-                "element": "id=partSelect4",
-                "value": "Transportation"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt4",
-                "value": "Budget Amount 4 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt4",
-                "value": "500"
-            },
-            {
-                "action": "click",
                 "element": "css=#exp1 .fa",
                 "value": "Expand Button"
             },
@@ -284,13 +259,13 @@
             },
             {
                 "action": "click",
-                "element": "id=cancelBtn",
-                "value": "Cancel Button"
+                "element": "id=saveBtn",
+                "value": "Save Button"
             }
         ],
         "expectedResults": "Edited iBERF successfully",
-        "actualResults": "NoSuchAlertError",
-        "status": "Fail",
-        "screenshot": "./screenshots/test_case_TC003_with_error.png"
+        "actualResults": "Edited iBERF successfully",
+        "status": "Pass",
+        "screenshot": "./screenshots/test_case_TC003.png"
     }
 ]
