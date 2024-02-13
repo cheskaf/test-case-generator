@@ -1,5 +1,6 @@
 // Import necessary modules
 const { By, until } = require('selenium-webdriver');
+const assert = require('assert');
 const {
     createTestCase,
     determineStatus,
@@ -60,7 +61,18 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
 
             // Navigate to the edit page
             console.log("Navigating to the edit page...");
-            await driver.get("https://mgenesis.sharepoint.com/sites/DigiCash/SitePages/FormType.aspx?formType=IBERF2024000005");
+
+             // Wait until the #prj5 tbody is present
+            const tbodyElement = await driver.wait(until.elementLocated(By.css('#prj5')), 5000);
+
+            // Find the anchor tag within the #prj5 tbody
+            const anchorTag = await tbodyElement.findElement(By.css('a'));
+
+            // Retrieve the value of the href attribute
+            const link = await anchorTag.getAttribute("href");
+
+            // Open the retrieved link
+            await driver.get(link);
 
             console.log("Waiting for the edit page to load completely...");
             // Wait until the page is loaded completely
@@ -75,21 +87,28 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
 
             // Define an array of objects containing element identifiers and actions
             const elements = [
+                { selectorType: "id", identifier: "prjName", action: ["clear"] },
                 { selectorType: "id", identifier: "prjName", action: ["click", "sendKeys", "Project Title Edited"] },
                 { selectorType: "id", identifier: "needDate", action: ["click", "sendKeys", "2024-02-14"] },
                 { selectorType: "id", identifier: "prebidDate", action: ["click", "sendKeys", "2024-02-16"] },
                 { selectorType: "id", identifier: "bidDate", action: ["click", "sendKeys", "2024-02-20"] },
                 { selectorType: "id", identifier: "rqstr", action: ["click"] },
+                { selectorType: "id", identifier: "client", action: ["clear"] },
                 { selectorType: "id", identifier: "client", action: ["click", "sendKeys", "Microgenesis Business Systems"] },
                 { selectorType: "id", identifier: "select", action: ["click", "sendKeys", "Social Media"] },
+                { selectorType: "id", identifier: "prjAmt", action: ["clear"] },
                 { selectorType: "id", identifier: "prjAmt", action: ["click", "sendKeys", "20000"] },
-                { selectorType: "id", identifier: "gpa", action: ["click", "sendKeys", "29999", "29998"] },
-                { selectorType: "id", identifier: "bdgtAmt2", action: ["click", "sendKeys", "5000"] },
-                { selectorType: "id", identifier: "bdgtAmt3", action: ["click", "sendKeys", "5000"] },
+                { selectorType: "id", identifier: "gpa", action: ["clear"] },
+                { selectorType: "id", identifier: "gpa", action: ["click", "sendKeys", "29999"] },
+                { selectorType: "id", identifier: "bdgtAmt1", action: ["clear"] },
                 { selectorType: "id", identifier: "bdgtAmt1", action: ["click", "sendKeys", "10000"] },
+                { selectorType: "id", identifier: "bdgtAmt2", action: ["clear"] },
+                { selectorType: "id", identifier: "bdgtAmt2", action: ["click", "sendKeys", "5000"] },
+                { selectorType: "id", identifier: "bdgtAmt3", action: ["clear"] },
                 { selectorType: "id", identifier: "bdgtAmt3", action: ["click", "sendKeys", "500"] },
                 { selectorType: "id", identifier: "addRowBtn", action: ["click"] },
                 { selectorType: "id", identifier: "partSelect4", action: ["click", "sendKeys", "Transportation"] },
+                { selectorType: "id", identifier: "bdgtAmt4", action: ["clear"] },
                 { selectorType: "id", identifier: "bdgtAmt4", action: ["click", "sendKeys", "500"] },
                 { selectorType: "css", identifier: "#exp1 .fa", action: ["click"] },
                 { selectorType: "css", identifier: ".col-md-9", action: ["click"] },
@@ -133,7 +152,11 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
             screenshotFilePath = await captureAndSaveScreenshot(driver, testCaseId);
 
             // Cancel the form submission (because of error when clicking save draft/submit button)
-            await driver.findElement(By.id("cancelBtn")).click()
+            // await driver.findElement(By.id("cancelBtn")).click()
+            await driver.findElement(By.id("saveBtn")).click()
+            assert(await driver.switchTo().alert().getText() == "Are you sure you want to save as draft?")
+            await driver.switchTo().alert().accept()
+            assert(await driver.switchTo().alert().getText() == "The form has been successfully Saved")
             
             // Set values for actualResults and status
             actualResults = 'Edited iBERF successfully';
@@ -172,15 +195,11 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
                 { action: 'click', element: 'id=prjAmt', value: 'Project Amount Textfield' },
                 { action: 'input', element: 'id=prjAmt', value: '20000' },
                 { action: 'click', element: 'id=gpa', value: 'GPA Textfield' },
-                { action: 'input', element: 'id=gpa', value: '29999' },
-                { action: 'click', element: 'id=gpa', value: 'GPA Textfield' },
-                { action: 'input', element: 'id=gpa', value: '29998' },
-                { action: 'click', element: 'id=bdgtAmt2', value: 'Budget Amount 2 Textfield' },
-                { action: 'input', element: 'id=bdgtAmt2', value: '5000' },
-                { action: 'click', element: 'id=bdgtAmt3', value: 'Budget Amount 3 Textfield' },
-                { action: 'input', element: 'id=bdgtAmt3', value: '5000' },
+                { action: 'input', element: 'id=gpa', value: '29999' },           
                 { action: 'click', element: 'id=bdgtAmt1', value: 'Budget Amount 1 Textfield' },
                 { action: 'input', element: 'id=bdgtAmt1', value: '10000' },
+                { action: 'click', element: 'id=bdgtAmt2', value: 'Budget Amount 2 Textfield' },
+                { action: 'input', element: 'id=bdgtAmt2', value: '5000' },
                 { action: 'click', element: 'id=bdgtAmt3', value: 'Budget Amount 3 Textfield' },
                 { action: 'input', element: 'id=bdgtAmt3', value: '500' },
                 { action: 'click', element: 'id=addRowBtn', value: 'Add Row Button' },
@@ -188,13 +207,7 @@ async function testDigicashRequest(driver, TEST_CASE_FILE_PATH) {
                 { action: 'select', element: 'id=partSelect4', value: 'Transportation' },
                 { action: 'click', element: 'id=bdgtAmt4', value: 'Budget Amount 4 Textfield' },
                 { action: 'input', element: 'id=bdgtAmt4', value: '500' },
-                { action: 'click', element: 'css=#exp1 .fa', value: 'Expand Button' },
-                { action: 'click', element: 'id=bdgtAmt2', value: 'Budget Amount 2 Textfield' },
-                { action: 'click', element: 'id=bdgtAmt3', value: 'Budget Amount 3 Textfield' },
-                { action: 'input', element: 'id=bdgtAmt3', value: '1500' },
-                { action: 'click', element: 'id=bdgtAmt4', value: 'Budget Amount 4 Textfield' },
-                { action: 'click', element: 'id=bdgtAmt4', value: 'Budget Amount 4 Textfield' },
-                { action: 'input', element: 'id=bdgtAmt4', value: '2500' },
+                { action: 'click', element: 'css=#exp1 .fa', value: 'Expand Button' },                
                 { action: 'click', element: 'css=.col-md-9', value: 'Column' },
                 { action: 'click', element: 'id=cancelBtn', value: 'Cancel Button' }                
             ],

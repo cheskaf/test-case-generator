@@ -219,13 +219,13 @@
             },
             {
                 "action": "click",
-                "element": "id=gpa",
-                "value": "GPA Textfield"
+                "element": "id=bdgtAmt1",
+                "value": "Budget Amount 1 Textfield"
             },
             {
                 "action": "input",
-                "element": "id=gpa",
-                "value": "29998"
+                "element": "id=bdgtAmt1",
+                "value": "10000"
             },
             {
                 "action": "click",
@@ -236,26 +236,6 @@
                 "action": "input",
                 "element": "id=bdgtAmt2",
                 "value": "5000"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt3",
-                "value": "Budget Amount 3 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt3",
-                "value": "5000"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt1",
-                "value": "Budget Amount 1 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt1",
-                "value": "10000"
             },
             {
                 "action": "click",
@@ -299,36 +279,6 @@
             },
             {
                 "action": "click",
-                "element": "id=bdgtAmt2",
-                "value": "Budget Amount 2 Textfield"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt3",
-                "value": "Budget Amount 3 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt3",
-                "value": "1500"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt4",
-                "value": "Budget Amount 4 Textfield"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt4",
-                "value": "Budget Amount 4 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt4",
-                "value": "2500"
-            },
-            {
-                "action": "click",
                 "element": "css=.col-md-9",
                 "value": "Column"
             },
@@ -339,8 +289,8 @@
             }
         ],
         "expectedResults": "Edited iBERF successfully",
-        "actualResults": "Edited iBERF successfully",
-        "status": "Pass",
-        "screenshot": "./screenshots/test_case_TC003.png"
+        "actualResults": "NoSuchAlertError",
+        "status": "Fail",
+        "screenshot": "./screenshots/test_case_TC003_with_error.png"
     }
 ]
