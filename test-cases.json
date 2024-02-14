@@ -207,8 +207,8 @@
             }
         ],
         "expectedResults": "Edited iBERF successfully",
-        "actualResults": "Edited iBERF successfully",
-        "status": "Pass",
-        "screenshot": "./screenshots/test_case_T0002.png"
+        "actualResults": "ElementNotInteractableError: Element <button id=\"saveBtn\" class=\"btn btn-warning btn-block\" type=\"button\"> could not be scrolled into view",
+        "status": "Fail",
+        "screenshot": "./screenshots/test_case_T0002_with_error.png"
     }
 ]

@@ -56,7 +56,18 @@ async function testDashboard(driver, TEST_CASE_FILE_PATH) {
     
             // Calculate elapsed time for navigating to SharePoint landing page
             const sharePointElapsedTime = new Date().getTime() - sharePointStartTime;
-            console.log(`SharePoint landing page elapsed time: ${sharePointElapsedTime} milliseconds`);                
+            console.log(`SharePoint landing page elapsed time: ${sharePointElapsedTime} milliseconds`);   
+            
+            // Find all elements on the page
+            let elements = await driver.findElements(By.css('*'));
+
+            // Iterate over each element and extract its text content
+            for (let element of elements) {
+                const text = await element.getText();
+                if (text.trim() !== '') {
+                    console.log(text);
+                }
+            }
 
             // Set values for actualResults and status
             actualResults = 'Access the DigiCash System landing page.';
