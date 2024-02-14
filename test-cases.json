@@ -1,131 +1,21 @@
 [
     {
-        "test_case_id": "TC001",
-        "description": "Verify post editing functionality",
+        "test_case_id": "T0001",
+        "description": "Access the dashboard",
         "steps": [
             {
-                "action": "navigate",
-                "value": "View Post page: https://artisan-ai-a5f011e35d03.herokuapp.com/post/97/"
-            },
-            {
-                "action": "click",
-                "element": ".fa-ellipsis",
-                "value": "Dropdown Menu icon"
-            },
-            {
-                "action": "click",
-                "element": ".show > li:nth-child(1) .dropdown-item",
-                "value": "Edit button"
-            },
-            {
-                "action": "click",
-                "element": "postname",
-                "value": "Input field for post name"
-            },
-            {
-                "action": "type",
-                "element": "postname",
-                "value": "\"eula plushie\""
-            },
-            {
-                "action": "click",
-                "element": "postdescription",
-                "value": "Input field for post description"
-            },
-            {
-                "action": "type",
-                "element": "postdescription",
-                "value": "\"my fav character!\""
-            },
-            {
-                "action": "click",
-                "element": "difficultySelect",
-                "value": "Dropdown for difficulty level"
-            },
-            {
-                "action": "click",
-                "element": "option:nth-child(4)",
-                "value": "\"Expert difficulty level\""
-            },
-            {
-                "action": "click",
-                "element": ".project-btn-primary",
-                "value": "Submit button"
+                "action": "Navigate to the DigiCash System landing page by accessing the link",
+                "value": "https://mgenesis.sharepoint.com/sites/DigiCash/SitePages/LandingPage.aspx"
             }
         ],
-        "expectedResults": "Post successfully edited",
-        "actualResults": "Post successfully edited",
+        "expectedResults": "Access the DigiCash System landing page.",
+        "actualResults": "Access the DigiCash System landing page.",
         "status": "Pass",
-        "screenshot": "./screenshots/test_case_TC001.png"
+        "screenshot": "./screenshots/test_case_T0001.png"
     },
     {
-        "test_case_id": "TC002",
-        "description": "Verify profile editing functionality",
-        "steps": [
-            {
-                "action": "click",
-                "element": "usericon",
-                "value": "User icon"
-            },
-            {
-                "action": "click",
-                "element": ".show > li:nth-child(1) .dropdown-item",
-                "value": "Edit button"
-            },
-            {
-                "action": "click",
-                "element": "profileThemeSelect",
-                "value": "Dropdown for profile theme"
-            },
-            {
-                "action": "click",
-                "element": "option:nth-child(3)",
-                "value": "\"🧡 orange\""
-            },
-            {
-                "action": "click",
-                "element": "postname",
-                "value": "Input field for post name"
-            },
-            {
-                "action": "type",
-                "element": "postname",
-                "value": "\"hj\""
-            },
-            {
-                "action": "click",
-                "element": "postdescription",
-                "value": "Input field for post description"
-            },
-            {
-                "action": "type",
-                "element": "postdescription",
-                "value": "\"hi, i'm hyunjin!\""
-            },
-            {
-                "action": "click",
-                "element": "difficultySelect",
-                "value": "Dropdown for difficulty level"
-            },
-            {
-                "action": "click",
-                "element": "option:nth-child(1)",
-                "value": "\"Beginner difficulty level\""
-            },
-            {
-                "action": "click",
-                "element": ".select-btn-preferences",
-                "value": "Submit button"
-            }
-        ],
-        "expectedResults": "Profile successfully edited",
-        "actualResults": "Error: Element 'undefined' not interactable",
-        "status": "Fail",
-        "screenshot": "./screenshots/test_case_TC002_with_error.png"
-    },
-    {
-        "test_case_id": "TC003",
-        "description": "Verify DigiCash \"Edit iBERF\" functionality",
+        "test_case_id": "T0002",
+        "description": "Edit iBERF",
         "steps": [
             {
                 "action": "clear",
@@ -319,6 +209,6 @@
         "expectedResults": "Edited iBERF successfully",
         "actualResults": "Edited iBERF successfully",
         "status": "Pass",
-        "screenshot": "./screenshots/test_case_TC003.png"
+        "screenshot": "./screenshots/test_case_T0002.png"
     }
 ]

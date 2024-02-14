@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test Cases</title>
+    <title>Test Case: Request Forms</title>
     <style>
       table {
         width: 100%;
         border-collapse: collapse;
+        margin-bottom: 20px;
       }
       th,
       td {
@@ -22,19 +23,35 @@
   </head>
   
   <body>
-    <h1>Test Cases</h1>
-    <p>Updated: <span id="updated"></span></p>
+    <h3>Test Case</h3>
+    <table>
+      <tr>
+        <th>Functionalities</td>
+        <td>
+          <span id="title">Accounting’s Dashboard, Viewing and Printing of Forms</span>
+          <!--<ul>
+            <li><a href="#Request1">Initial Budget Expense Request Form Creation (IBERF)</a></li>
+          </ul>-->
+        </td>
+      </tr>
+      <tr>
+        <th>Updated</td>
+        <td><span id="updated"></span></td>
+      </tr>
+    </table>
+
     <table id="testScriptTable">
-      <thead>
-        <tr>
-          <th>Test Case ID</th>
-          <th>Description</th>
-          <th>Steps</th>
-          <th>Expected Results</th>
-          <th>Actual Results</th>
-          <th>Status</th>
-        </tr>
-      </thead>
+      <tr>
+        <th colspan="6"><span id="#Request1">Initial Budget Expense Request Form Creation (IBERF)</span></td>
+      </tr>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Steps</th>
+        <th>Expected Results</th>
+        <th>Actual Results</th>
+        <th>Status</th>
+      </tr>
       <tbody id="testScriptBody">
         <!-- Test cases will be dynamically added here -->
       </tbody>
@@ -60,21 +77,19 @@
             const row = document.createElement("tr");
             row.innerHTML = `
                         <td>${testCase.test_case_id}</td>
-                        <td>
-                          ${testCase.description}
-                          <img src="${testCase.screenshot}" alt="screenshot" style="max-height:300px; display:block; margin-top:10px;" />
-                        </td>
-                        <td>
-                          <ol>
-                            ${testCase.steps
-                              .map((step) => `<li>${step.action}: ${step.value}</li>`)
-                              .join("")}
-                          </ol>
-                        </td>
-                        <td>${testCase.expectedResults}</td>
-                        <td>${testCase.actualResults}</td>
-                        <td>${testCase.status}</td>
-                    `;
+                  <td>
+                    ${testCase.description}
+                    <img src="${testCase.screenshot}" alt="screenshot" style="max-height:300px; display:block; margin-top:10px;" />
+                  </td>
+                  <td>
+                    <ol>
+                      ${testCase.steps.map((step) => `<li>${step.action}: ${step.value}</li>`).join("")}
+                    </ol>
+                  </td>
+                  <td>${testCase.expectedResults}</td>
+                  <td>${testCase.actualResults}</td>
+                  <td>${testCase.status}</td>
+              `;
             testScriptBody.appendChild(row);
           });
         })

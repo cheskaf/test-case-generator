@@ -6,6 +6,7 @@ const fs = require('fs');
 const TEST_CASE_FILE_PATH = 'test-cases.json';
 
 // Import test scenarios
+const testDashboard  = require( './test-scenarios/TC000-digicash-dashboard.js' );
 const testDigicashRequestLogin  = require( './test-scenarios/TC001-digicash-request-login.js' );
 
 // Function to generate the current date and time
@@ -41,23 +42,8 @@ async function executeTestScenarios() {
         const loginElapsedTime = new Date().getTime() - loginStartTime;
         console.log(`User login elapsed time: ${loginElapsedTime} milliseconds`);
 
-        // Start time for navigating to SharePoint landing page
-        const sharePointStartTime = new Date().getTime();
-
-        // Navigate to the Landing page
-        console.log("Navigating to the SharePoint landing page...");
-        await driver.get("https://mgenesis.sharepoint.com/sites/DigiCash/SitePages/LandingPage.aspx");
-
-        console.log("Waiting for the SharePoint page to load completely...");
-        // Wait until the SharePoint page is loaded completely
-        await driver.wait(until.titleIs('DigiCash - LandingPage'), 30000);
-        console.log("SharePoint page loaded successfully.");
-
-        // Calculate elapsed time for navigating to SharePoint landing page
-        const sharePointElapsedTime = new Date().getTime() - sharePointStartTime;
-        console.log(`SharePoint landing page elapsed time: ${sharePointElapsedTime} milliseconds`);
-        
         // Execute test scenarios
+        await testDashboard(driver, TEST_CASE_FILE_PATH);
         await testDigicashRequestLogin(driver, TEST_CASE_FILE_PATH);
         
     } catch (error) {
