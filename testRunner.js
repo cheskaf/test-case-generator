@@ -1,15 +1,12 @@
 // Import necessary modules
-const { Builder, By } = require('selenium-webdriver');
+const { Builder, By, until } = require('selenium-webdriver');
 const fs = require('fs');
 
 // Constant for the test case JSON file path
 const TEST_CASE_FILE_PATH = 'test-cases.json';
 
 // Import test scenarios
-const testEditPost = require('./test-scenarios/test-editpost.js');
-const testEditProfile = require('./test-scenarios/test-editprofile.js');
-const testDigicashRequest = require('./test-scenarios/test-digicash-request.js');
-const testDigicashRequestLogin  = require( './test-scenarios/test-digicash-request-login.js' );
+const testDigicashRequestLogin  = require( './test-scenarios/TC001-digicash-request-login.js' );
 
 // Function to generate the current date and time
 function getCurrentDateTime() {
@@ -28,18 +25,41 @@ async function executeTestScenarios() {
         // Write the date and time to a file
         fs.writeFileSync('updated.txt', dateTime);
         
-        // Try logging in
-        // await driver.get("https://artisan-ai-a5f011e35d03.herokuapp.com/login/")
-        // await driver.findElement(By.id("username_or_email")).click()
-        // await driver.findElement(By.id("username_or_email")).sendKeys("userbeginner")
-        // await driver.findElement(By.id("password")).sendKeys("Abc_1234")
-        // await driver.findElement(By.css(".project-btn-secondary")).click()
+        // Try logging in        
+        // Start time for user login
+        const loginStartTime = new Date().getTime();
+        // Navigate to the login page
+        console.log("Waiting for user login...");
+        await driver.get("https://login.microsoftonline.com/");
+
+        console.log("Waiting for the page to load completely...");
+        // Wait until the page is loaded completely
+        await driver.wait(until.urlIs("https://www.office.com/?auth=2"), 300000);
+        console.log("Page loaded successfully.");
+
+        // Calculate elapsed time for user login
+        const loginElapsedTime = new Date().getTime() - loginStartTime;
+        console.log(`User login elapsed time: ${loginElapsedTime} milliseconds`);
+
+        // Start time for navigating to SharePoint landing page
+        const sharePointStartTime = new Date().getTime();
+
+        // Navigate to the Landing page
+        console.log("Navigating to the SharePoint landing page...");
+        await driver.get("https://mgenesis.sharepoint.com/sites/DigiCash/SitePages/LandingPage.aspx");
+
+        console.log("Waiting for the SharePoint page to load completely...");
+        // Wait until the SharePoint page is loaded completely
+        await driver.wait(until.titleIs('DigiCash - LandingPage'), 30000);
+        console.log("SharePoint page loaded successfully.");
+
+        // Calculate elapsed time for navigating to SharePoint landing page
+        const sharePointElapsedTime = new Date().getTime() - sharePointStartTime;
+        console.log(`SharePoint landing page elapsed time: ${sharePointElapsedTime} milliseconds`);
         
         // Execute test scenarios
         await testDigicashRequestLogin(driver, TEST_CASE_FILE_PATH);
-        // await testDigicashRequest(driver, TEST_CASE_FILE_PATH);
-        // await testEditPost(driver, TEST_CASE_FILE_PATH);
-        // await testEditProfile(driver, TEST_CASE_FILE_PATH);
+        
     } catch (error) {
         console.error('Error occurred:', error);
     } finally {

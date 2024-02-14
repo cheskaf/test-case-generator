@@ -1,4 +1,5 @@
 // Import necessary modules
+const { By } = require('selenium-webdriver');
 const fs = require('fs');
 
 // Function to create a test case object
@@ -70,9 +71,32 @@ function appendTestCaseToFile(testCase, filePath) {
     fs.writeFileSync(filePath, JSON.stringify(testCases, null, 4));
 }
 
+// Helper function to create test actions
+function createTestActions(elements) {
+    const testActions = []
+
+    for (const { selectorType, identifier, action } of elements) {
+        let actionObj = {}
+
+        if (action.length === 1) {
+            actionObj.action = action[0]
+        } else {
+            actionObj.action = action[1]
+            actionObj.value = action[2]
+        }
+
+        actionObj.element = selectorType === "id" ? By.id(identifier) : By.css(identifier)
+
+        testActions.push(actionObj)
+    }
+
+    return testActions
+}
+
 module.exports = {
     createTestCase,
     determineStatus,
     captureAndSaveScreenshot,
-    appendTestCaseToFile
+    appendTestCaseToFile,
+    createTestActions
 };

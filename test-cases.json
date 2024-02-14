@@ -128,139 +128,192 @@
         "description": "Verify DigiCash \"Edit iBERF\" functionality",
         "steps": [
             {
-                "action": "click",
-                "element": "id=prjName",
-                "value": "Project Name Textfield"
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prjName\"]"
+                }
             },
             {
-                "action": "input",
-                "element": "id=prjName",
-                "value": "Project Name - Updated"
+                "action": "sendKeys",
+                "value": "Project Name - Edited",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prjName\"]"
+                }
             },
             {
-                "action": "click",
-                "element": "id=needDate",
-                "value": "Need Date Textfield"
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prjName\"]"
+                }
             },
             {
-                "action": "input",
-                "element": "id=needDate",
-                "value": "2024-02-16"
+                "action": "sendKeys",
+                "value": "Project Name - Updated",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prjName\"]"
+                }
             },
             {
-                "action": "click",
-                "element": "id=prebidDate",
-                "value": "Pre-bid Date Textfield"
+                "action": "sendKeys",
+                "value": "2024-02-16",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"needDate\"]"
+                }
             },
             {
-                "action": "input",
-                "element": "id=prebidDate",
-                "value": "2024-02-19"
+                "action": "sendKeys",
+                "value": "2024-02-19",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prebidDate\"]"
+                }
             },
             {
-                "action": "click",
-                "element": "id=bidDate",
-                "value": "Bid Date Textfield"
+                "action": "sendKeys",
+                "value": "2024-02-22",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bidDate\"]"
+                }
             },
             {
-                "action": "input",
-                "element": "id=bidDate",
-                "value": "2024-02-22"
-            },
-            {
-                "action": "click",
-                "element": "id=rqstr",
-                "value": "Requestor Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=rqstr",
-                "value": "ITSD Dev Intern 1"
-            },
-            {
-                "action": "click",
-                "element": "id=client",
-                "value": "Client Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=client",
-                "value": "Microgenesis Business Systems"
-            },
-            {
-                "action": "click",
-                "element": "id=select",
-                "value": "Project Type Dropdown"
-            },
-            {
-                "action": "select",
-                "element": "id=select",
-                "value": "Social Media"
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"rqstr\"]"
+                }
             },
             {
                 "action": "click",
-                "element": "id=prjAmt",
-                "value": "Project Amount Textfield"
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"rqstr\"]"
+                }
             },
             {
-                "action": "input",
-                "element": "id=prjAmt",
-                "value": "30000"
+                "action": "sendKeys",
+                "value": "Microgenesis Business Systems",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"rqstr\"]"
+                }
+            },
+            {
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"client\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "ITSD Dev Intern 1",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"client\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "Social Media",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"select\"]"
+                }
+            },
+            {
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prjAmt\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "30000",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"prjAmt\"]"
+                }
+            },
+            {
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"gpa\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "49999",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"gpa\"]"
+                }
+            },
+            {
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bdgtAmt1\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "15000",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bdgtAmt1\"]"
+                }
+            },
+            {
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bdgtAmt2\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "8000",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bdgtAmt2\"]"
+                }
+            },
+            {
+                "action": "clear",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bdgtAmt3\"]"
+                }
+            },
+            {
+                "action": "sendKeys",
+                "value": "700",
+                "element": {
+                    "using": "css selector",
+                    "value": "*[id=\"bdgtAmt3\"]"
+                }
             },
             {
                 "action": "click",
-                "element": "id=gpa",
-                "value": "GPA Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=gpa",
-                "value": "49999"
+                "element": {
+                    "using": "css selector",
+                    "value": "#exp1 .fa"
+                }
             },
             {
                 "action": "click",
-                "element": "id=bdgtAmt1",
-                "value": "Budget Amount 1 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt1",
-                "value": "15000"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt2",
-                "value": "Budget Amount 2 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt2",
-                "value": "8000"
-            },
-            {
-                "action": "click",
-                "element": "id=bdgtAmt3",
-                "value": "Budget Amount 3 Textfield"
-            },
-            {
-                "action": "input",
-                "element": "id=bdgtAmt3",
-                "value": "700"
-            },
-            {
-                "action": "click",
-                "element": "css=#exp1 .fa",
-                "value": "Expand Button"
-            },
-            {
-                "action": "click",
-                "element": "css=.col-md-9",
-                "value": "Column"
-            },
-            {
-                "action": "click",
-                "element": "id=saveBtn",
-                "value": "Save Button"
+                "element": {
+                    "using": "css selector",
+                    "value": ".col-md-9"
+                }
             }
         ],
         "expectedResults": "Edited iBERF successfully",
